@@ -2,7 +2,7 @@ export interface adapter
 {
   platform: string;
   modules: string[];
-  config: any;
+  chat: (model: string, data: any) => Promise<string>;
 }
 
 export class oobAdapter
@@ -57,12 +57,9 @@ export class oobAdapter
     return modelList;
   }
 
-  // 获取适配器的配置
-  public getAdapterConfig(platform: string)
+  public async chat(platform: string, model: string, data: any): Promise<string>
   {
-    if (!this.adapterList[platform]) { return {}; }
-    return this.adapterList[platform].config;
+    if (!this.adapterList[platform]) { throw new Error(`Adapter ${platform} does not exist.`); }
+    return this.adapterList[platform].chat(model, data);
   }
-
-
 }

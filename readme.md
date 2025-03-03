@@ -24,7 +24,7 @@
 Adapter: {
   platform: string;
   modules: string[];
-  config: any;
+  chat: (model: string, data: any) => Promise<string>;
 }
 ```
 
@@ -33,7 +33,9 @@ Adapter: {
 |getAdapterList() => string[]|获取所有的适配器列表|
 |getModel(platform:string) => strig[]|通过适配器的名字查询对应的模型|
 |getModelList() => string[]|获取所有模型（返回的字符串元素是：[platform:model,platform:model]）|
-|getAdapterConfig(platform:string)=>Adapter.config|通过适配器名字查询对应的配置|
+|chat(platform: string, model: string, data: any) => Promise<string>|调用适配器完成对应平台的api调用，返回调用结果|
+
+将模型配置，访问后端这些的功能下放到每个适配器插件，使适配器自己完成维护。
 
 ## History（消息历史）
 
