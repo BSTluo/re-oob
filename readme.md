@@ -6,7 +6,7 @@
 
 首先创建一个oob服务，koishi的服务是一个类。这个服务类内包含以下内容：
 
-![截图](34f0477ec37c3bdfbc0a37a76f3a90eb.png)
+![截图](./docs/34f0477ec37c3bdfbc0a37a76f3a90eb.png)
 
 |index.ts|oob服务类|
 |--|--|
@@ -71,8 +71,8 @@ Adapter: {
 
 Adapter，Session，History，Tools之类的都是类而不是函数集）我希望能够因为这样的设计而使得整个插件可以复用。最终的oob服务类大概是这样的：
 
-![截图](0bcad1251b004478fac3f251a4170d4e.png)
+![截图](./docs/0bcad1251b004478fac3f251a4170d4e.png)
 
 能够直接通过ctx.oob来访问adapter等模块内的方法
 
-![截图](3eea986cefddb9bc4f154d8eebac6bc7.png)
+![截图](./docs/3eea986cefddb9bc4f154d8eebac6bc7.png)
