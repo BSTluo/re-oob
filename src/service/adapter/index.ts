@@ -34,7 +34,7 @@ export class oobAdapter
   /**
    * 获取某平台的模型
    * @param platform 平台
-   * @returns 模型列表
+   * @returns 模型列表，格式是model
    */
   public getModel(platform: string): string[]
   {
@@ -42,7 +42,10 @@ export class oobAdapter
     return this.adapterList[platform].modules;
   }
 
-  // 获取所有模型的列表
+  /**
+   * 获取所有模型的列表
+   * @returns 模型名称，格式是platform:model 
+   */
   public getModelList(): string[]
   {
     const adapterList = this.getAdapterList();
@@ -57,9 +60,28 @@ export class oobAdapter
     return modelList;
   }
 
+  /**
+   * 解析模型名称
+   * @param modelName 模型名称，格式是platform:model 
+   * @returns 
+   */
+  public parModelName (modelName: string): { platform: string, model: string }
+  {
+    const [platform, model] = modelName.split(':');
+    return { platform, model };
+  }
+  /**
+   * 发起请求
+   * @param platform 适配器平台 
+   * @param model 聊天模型
+   * @param data 请求数据
+   * @returns 
+   */
   public async chat(platform: string, model: string, data: any): Promise<string>
   {
     if (!this.adapterList[platform]) { throw new Error(`Adapter ${platform} does not exist.`); }
     return this.adapterList[platform].chat(model, data);
   }
+
+
 }
