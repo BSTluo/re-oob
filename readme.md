@@ -2,7 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/koishi-plugin-re-oob?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-re-oob)
 
-# 入门
+# 开发计划(创建服务)
+
 
 首先创建一个oob服务，koishi的服务是一个类。这个服务类内包含以下内容：
 
@@ -76,3 +77,9 @@ Adapter，Session，History，Tools之类的都是类而不是函数集）我希
 能够直接通过ctx.oob来访问adapter等模块内的方法
 
 ![截图](./docs/3eea986cefddb9bc4f154d8eebac6bc7.png)
+
+# 开发计划（oob插件）
+
+开发完成服务类后，oob插件使用ctx.plugin将oob服务类载入。
+
+使用ctx.command创建对应的指令，而后结合ctx.oob指令编写聊天功能，消息缓存功能等）
